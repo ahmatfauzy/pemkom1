@@ -2,7 +2,6 @@ package UILogin;
 
 import Owner.OwnerPage;
 import Kasir.KasirPage;
-//import Admin.Admin;
 import Admin.DashAdm_Home;
 import java.sql.Connection;
 import java.sql.Statement;
@@ -24,7 +23,7 @@ public class login extends javax.swing.JFrame {
     public login() {
         initComponents();
         
-//        fullscreen
+        // fullscreen
         this.setExtendedState(javax.swing.JFrame.MAXIMIZED_BOTH);
     }
 

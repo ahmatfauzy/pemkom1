@@ -1,9 +1,15 @@
-
 package Admin;
 
 import UILogin.UserProfile;
 import UILogin.login;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.Statement;
 import javax.swing.JFrame;
+import javax.swing.table.DefaultTableModel;
+import UILogin.Koneksi;
+import javax.swing.JOptionPane;
+
 
 public class DashAdm_Akun extends javax.swing.JFrame {
 
@@ -24,7 +30,9 @@ public class DashAdm_Akun extends javax.swing.JFrame {
         txtNamaProfile.setText(u.getFullname());
         txtLevel.setText(u.getLevel());
 //        txtTextNama.setText(u.getFullname());
+        viewdata("");
     }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -35,12 +43,14 @@ public class DashAdm_Akun extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        rSLabelVerticalDBeanInfo1 = new rojerusan.RSLabelVerticalDBeanInfo();
         PanelUtama = new javax.swing.JPanel();
         header = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
+        jPanel2 = new javax.swing.JPanel();
         txtNamaProfile = new javax.swing.JLabel();
         txtLevel = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
         sidebar = new javax.swing.JPanel();
         btnProduk = new rojeru_san.complementos.RSButtonHover();
         btnHome = new rojeru_san.complementos.RSButtonHover();
@@ -51,33 +61,71 @@ public class DashAdm_Akun extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         txtSearch = new javax.swing.JTextField();
         jPanel1 = new javax.swing.JPanel();
+        buttonEdit = new rojeru_san.complementos.RSButtonHover();
+        buttonTambah = new rojeru_san.complementos.RSButtonHover();
+        rSButtonHover3 = new rojeru_san.complementos.RSButtonHover();
+        btnRefresh = new rojeru_san.complementos.RSButtonHover();
+        buttonEdit2 = new rojeru_san.complementos.RSButtonHover();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Halaman Owner");
 
         PanelUtama.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        header.setBackground(new java.awt.Color(0, 153, 51));
+        header.setBackground(new java.awt.Color(12, 139, 139));
         header.setAlignmentX(0.0F);
         header.setAlignmentY(0.0F);
         header.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        txtNamaProfile.setFont(new java.awt.Font("Calibri", 1, 24)); // NOI18N
-        txtNamaProfile.setText("Nama");
-        header.add(txtNamaProfile, new org.netbeans.lib.awtextra.AbsoluteConstraints(1149, 25, -1, 23));
-
-        txtLevel.setFont(new java.awt.Font("Calibri", 1, 14)); // NOI18N
-        txtLevel.setText("Role");
-        header.add(txtLevel, new org.netbeans.lib.awtextra.AbsoluteConstraints(1183, 54, -1, -1));
-
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/PROFILE.png"))); // NOI18N
-        header.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1300, 20, -1, -1));
-
         jLabel2.setFont(new java.awt.Font("Poppins", 1, 36)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(240, 240, 240));
         jLabel2.setText("OnlineShop");
         jLabel2.setToolTipText("");
         jLabel2.setVerticalAlignment(javax.swing.SwingConstants.TOP);
         header.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 17, -1, -1));
+
+        jPanel2.setBackground(new java.awt.Color(102, 255, 102));
+
+        txtNamaProfile.setFont(new java.awt.Font("Calibri", 1, 24)); // NOI18N
+        txtNamaProfile.setForeground(new java.awt.Color(240, 240, 240));
+        txtNamaProfile.setText("Nama");
+
+        txtLevel.setFont(new java.awt.Font("Calibri", 1, 14)); // NOI18N
+        txtLevel.setForeground(new java.awt.Color(240, 240, 240));
+        txtLevel.setText("Role");
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/PROFILE.png"))); // NOI18N
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(61, 61, 61)
+                        .addComponent(txtNamaProfile))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(80, 80, 80)
+                        .addComponent(txtLevel)))
+                .addGap(18, 18, 18)
+                .addComponent(jLabel1)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(txtNamaProfile, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtLevel)))
+                .addContainerGap(24, Short.MAX_VALUE))
+        );
+
+        header.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 10, 420, 80));
 
         PanelUtama.add(header, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -10, 1380, 90));
 
@@ -128,13 +176,13 @@ public class DashAdm_Akun extends javax.swing.JFrame {
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
             },
             new String [] {
-                "NO", "Fullname", "Username", "Password"
+                "ID", "NO", "Fullname", "Username", "Password", "Role"
             }
         ));
         jScrollPane1.setViewportView(jTable1);
@@ -146,7 +194,6 @@ public class DashAdm_Akun extends javax.swing.JFrame {
 
         txtSearch.setBackground(new java.awt.Color(242, 242, 242));
         txtSearch.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
-        txtSearch.setText("Search..");
         txtSearch.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(0, 0, 0)));
         txtSearch.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -161,14 +208,62 @@ public class DashAdm_Akun extends javax.swing.JFrame {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 220, Short.MAX_VALUE)
+            .addGap(0, 0, Short.MAX_VALUE)
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
+            .addGap(0, 0, Short.MAX_VALUE)
         );
 
         PanelUtama.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -10, 220, -1));
+
+        buttonEdit.setBackground(new java.awt.Color(255, 102, 0));
+        buttonEdit.setText("Edit");
+        buttonEdit.setColorHover(new java.awt.Color(153, 102, 0));
+        buttonEdit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonEditActionPerformed(evt);
+            }
+        });
+        PanelUtama.add(buttonEdit, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 110, 150, -1));
+
+        buttonTambah.setText("Tambah");
+        buttonTambah.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonTambahActionPerformed(evt);
+            }
+        });
+        PanelUtama.add(buttonTambah, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 110, 150, -1));
+
+        rSButtonHover3.setBackground(new java.awt.Color(255, 0, 0));
+        rSButtonHover3.setText("Hapus");
+        rSButtonHover3.setColorHover(new java.awt.Color(153, 0, 0));
+        rSButtonHover3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rSButtonHover3ActionPerformed(evt);
+            }
+        });
+        PanelUtama.add(rSButtonHover3, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 110, 150, -1));
+
+        btnRefresh.setBackground(new java.awt.Color(51, 255, 51));
+        btnRefresh.setText("Refresh");
+        btnRefresh.setColorHover(new java.awt.Color(153, 102, 0));
+        btnRefresh.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRefreshActionPerformed(evt);
+            }
+        });
+        PanelUtama.add(btnRefresh, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 110, 150, -1));
+
+        buttonEdit2.setBackground(new java.awt.Color(255, 102, 0));
+        buttonEdit2.setText("Edit");
+        buttonEdit2.setColorHover(new java.awt.Color(153, 102, 0));
+        buttonEdit2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonEdit2ActionPerformed(evt);
+            }
+        });
+        PanelUtama.add(buttonEdit2, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 110, 150, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -217,7 +312,79 @@ public class DashAdm_Akun extends javax.swing.JFrame {
 
     private void txtSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSearchActionPerformed
         // TODO add your handling code here:
+        String key = txtSearch.getText();
+        String w = "WHERE "
+                + "fullname LIKE '%"+key+"%' "
+                + "OR username LIKE '%"+key+"%' "
+                + "OR password LIKE '%"+key+"%' "
+                + "OR level LIKE '%"+key+"%'";
+        viewdata(w);
     }//GEN-LAST:event_txtSearchActionPerformed
+
+    private void buttonEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonEditActionPerformed
+        int n = jTable1.getSelectedRow();
+        if(n != -1){
+            int id = Integer.parseInt(jTable1.getValueAt(n, 0).toString());
+            String FN = jTable1.getValueAt(n, 2).toString();
+            String UN = jTable1.getValueAt(n, 3).toString();
+            String PS = jTable1.getValueAt(n, 4).toString();
+            String LV = jTable1.getValueAt(n, 5).toString();
+            EditBaru E = new EditBaru(this, true);
+            E.setId(id);
+            E.setFN(FN);
+            E.setUS(UN);
+            E.setPS(PS);
+            E.setLV(LV);
+            E.setVisible(true); 
+//            DISINI DITEMPAT INI ERROR !!!!
+        }
+    }//GEN-LAST:event_buttonEditActionPerformed
+
+    private void buttonTambahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonTambahActionPerformed
+        Tambah t = new Tambah();
+        t.setVisible(true);
+    }//GEN-LAST:event_buttonTambahActionPerformed
+
+    private void rSButtonHover3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rSButtonHover3ActionPerformed
+        int n = jTable1.getSelectedRow();
+        if(n != -1){
+            int id = Integer.parseInt(jTable1.getValueAt(n, 0).toString());
+//            JOptionPane.showMessageDialog(this, id); 
+            
+            int pilihan = JOptionPane.showConfirmDialog(this, 
+                    "Apakah Anda yakin untuk menghapus data user ini?",
+                    "Hapus Data",JOptionPane.YES_NO_OPTION);
+            if(pilihan == 0){
+                //yes
+                String Q = "DELETE FROM akun WHERE id="+id+" ";
+                try {
+                    Connection K = Koneksi.Go();
+                    Statement S = K.createStatement();
+                    S.executeUpdate(Q);
+                    viewdata(""); 
+                } catch (Exception e) {
+                }
+            }else {
+                //no
+            }
+
+            
+            
+        }else {
+            JOptionPane.showMessageDialog(this, "Anda belum memilih data"); 
+        
+        }
+    }//GEN-LAST:event_rSButtonHover3ActionPerformed
+
+    private void btnRefreshActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRefreshActionPerformed
+        // TODO add your handling code here:
+        txtSearch.setText(""); 
+        viewdata("");
+    }//GEN-LAST:event_btnRefreshActionPerformed
+
+    private void buttonEdit2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonEdit2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_buttonEdit2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -291,16 +458,51 @@ public class DashAdm_Akun extends javax.swing.JFrame {
     private rojeru_san.complementos.RSButtonHover btnHome;
     private rojeru_san.complementos.RSButtonHover btnLogout1;
     private rojeru_san.complementos.RSButtonHover btnProduk;
+    private rojeru_san.complementos.RSButtonHover btnRefresh;
+    private rojeru_san.complementos.RSButtonHover buttonEdit;
+    private rojeru_san.complementos.RSButtonHover buttonEdit2;
+    private rojeru_san.complementos.RSButtonHover buttonTambah;
     private javax.swing.JPanel header;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private static javax.swing.JTable jTable1;
+    private rojeru_san.complementos.RSButtonHover rSButtonHover3;
+    private rojerusan.RSLabelVerticalDBeanInfo rSLabelVerticalDBeanInfo1;
     private javax.swing.JPanel sidebar;
     private javax.swing.JLabel txtLevel;
     private javax.swing.JLabel txtNamaProfile;
     private javax.swing.JTextField txtSearch;
     // End of variables declaration//GEN-END:variables
+
+    public static void viewdata(String where) {
+        try {
+            DefaultTableModel m = (DefaultTableModel) jTable1.getModel();
+            m.getDataVector().removeAllElements();
+            Connection K = Koneksi.Go();
+            Statement S = K.createStatement();
+            String Q = "SELECT * FROM akun "+where;
+            ResultSet R = S.executeQuery(Q);
+            int n = 1;
+            while (R.next()) {                 
+                int id = R.getInt("id");
+                String fullname = R.getString("fullname");
+                String username = R.getString("username");
+                String password = R.getString("password");
+                String level = R.getString("level");
+                Object[] data = {id, n, fullname, username, password, level};
+                m.addRow(data); 
+                n++;
+            }
+            
+            jTable1.getColumnModel().getColumn(0).setMinWidth(0);
+            jTable1.getColumnModel().getColumn(0).setMaxWidth(0);
+//            
+        } catch (Exception e) {
+            //error handling
+        }
+    }
 }

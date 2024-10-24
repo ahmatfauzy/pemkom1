@@ -38,6 +38,7 @@ public class DashAdm_Home extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jMenu1 = new javax.swing.JMenu();
         PanelUtama = new javax.swing.JPanel();
         header = new javax.swing.JPanel();
         txtNamaProfile = new javax.swing.JLabel();
@@ -51,22 +52,27 @@ public class DashAdm_Home extends javax.swing.JFrame {
         btnLogout1 = new rojeru_san.complementos.RSButtonHover();
         jPanel1 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
+        jTabbedPane1 = new javax.swing.JTabbedPane();
+
+        jMenu1.setText("jMenu1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Halaman Owner");
 
         PanelUtama.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        header.setBackground(new java.awt.Color(0, 153, 51));
+        header.setBackground(new java.awt.Color(12, 139, 139));
         header.setAlignmentX(0.0F);
         header.setAlignmentY(0.0F);
         header.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         txtNamaProfile.setFont(new java.awt.Font("Calibri", 1, 24)); // NOI18N
+        txtNamaProfile.setForeground(new java.awt.Color(240, 240, 240));
         txtNamaProfile.setText("Nama");
         header.add(txtNamaProfile, new org.netbeans.lib.awtextra.AbsoluteConstraints(1149, 25, -1, 23));
 
         txtLevel.setFont(new java.awt.Font("Calibri", 1, 14)); // NOI18N
+        txtLevel.setForeground(new java.awt.Color(240, 240, 240));
         txtLevel.setText("Role");
         header.add(txtLevel, new org.netbeans.lib.awtextra.AbsoluteConstraints(1183, 54, -1, -1));
 
@@ -74,6 +80,7 @@ public class DashAdm_Home extends javax.swing.JFrame {
         header.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1300, 20, -1, -1));
 
         jLabel2.setFont(new java.awt.Font("Poppins", 1, 36)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(240, 240, 240));
         jLabel2.setText("OnlineShop");
         jLabel2.setToolTipText("");
         jLabel2.setVerticalAlignment(javax.swing.SwingConstants.TOP);
@@ -141,7 +148,8 @@ public class DashAdm_Home extends javax.swing.JFrame {
         PanelUtama.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -10, 220, -1));
 
         jLabel3.setText("menu home");
-        PanelUtama.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 260, -1, -1));
+        PanelUtama.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 140, -1, -1));
+        PanelUtama.add(jTabbedPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 140, -1, 30));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -173,7 +181,6 @@ public class DashAdm_Home extends javax.swing.JFrame {
     }//GEN-LAST:event_btnHomeActionPerformed
 
     private void btnAkunActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAkunActionPerformed
-        // TODO add your handling code here:
         this.setVisible(false);
         DashAdm_Akun l = new DashAdm_Akun(u);
         l.setVisible(true);
@@ -182,7 +189,6 @@ public class DashAdm_Home extends javax.swing.JFrame {
     }//GEN-LAST:event_btnAkunActionPerformed
 
     private void btnLogout1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogout1ActionPerformed
-        // TODO add your handling code here:
         this.setVisible(false);
         login l = new login();
         l.setVisible(true);
@@ -250,7 +256,9 @@ public class DashAdm_Home extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JMenu jMenu1;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JPanel sidebar;
     private javax.swing.JLabel txtLevel;
     private javax.swing.JLabel txtNamaProfile;

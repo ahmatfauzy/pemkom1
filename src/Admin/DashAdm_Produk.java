@@ -54,16 +54,18 @@ public class DashAdm_Produk extends javax.swing.JFrame {
 
         PanelUtama.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        header.setBackground(new java.awt.Color(0, 153, 51));
+        header.setBackground(new java.awt.Color(12, 139, 139));
         header.setAlignmentX(0.0F);
         header.setAlignmentY(0.0F);
         header.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         txtNamaProfile.setFont(new java.awt.Font("Calibri", 1, 24)); // NOI18N
+        txtNamaProfile.setForeground(new java.awt.Color(240, 240, 240));
         txtNamaProfile.setText("Nama");
         header.add(txtNamaProfile, new org.netbeans.lib.awtextra.AbsoluteConstraints(1149, 25, -1, 23));
 
         txtLevel.setFont(new java.awt.Font("Calibri", 1, 14)); // NOI18N
+        txtLevel.setForeground(new java.awt.Color(240, 240, 240));
         txtLevel.setText("Role");
         header.add(txtLevel, new org.netbeans.lib.awtextra.AbsoluteConstraints(1183, 54, -1, -1));
 
@@ -71,6 +73,7 @@ public class DashAdm_Produk extends javax.swing.JFrame {
         header.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1300, 20, -1, -1));
 
         jLabel2.setFont(new java.awt.Font("Poppins", 1, 36)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(240, 240, 240));
         jLabel2.setText("OnlineShop");
         jLabel2.setToolTipText("");
         jLabel2.setVerticalAlignment(javax.swing.SwingConstants.TOP);
