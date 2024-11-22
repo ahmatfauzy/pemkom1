@@ -11,6 +11,8 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
 import UILogin.Koneksi;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 /**
  *
@@ -196,6 +198,16 @@ public class EditBaru extends javax.swing.JDialog {
             
             DashAdm_Akun.viewdata(""); 
             JOptionPane.showMessageDialog(this, "Data berhasil diubah");
+            txtName.requestFocus();
+            
+            //format tanggal
+            Date d = new Date();
+            SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy H:m:s z");
+            String tanggal = sdf.format(d);
+            
+            
+            Function.logActivity("\n["+tanggal+"] Pembaruan user berhasil "); 
+            JOptionPane.showMessageDialog(this, "Data berhasil disimpan");
             txtName.requestFocus();
         } catch (HeadlessException | SQLException e) {
             

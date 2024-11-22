@@ -155,11 +155,11 @@ public class login extends javax.swing.JFrame {
 
         jLabel5.setFont(new java.awt.Font("Poppins", 1, 36)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel5.setText("ONLINE STORE");
+        jLabel5.setText("Point Of Sales");
 
         jLabel7.setFont(new java.awt.Font("Segoe UI Semilight", 1, 14)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel7.setText("copyright © ONLINE STORE All rights reserved");
+        jLabel7.setText("copyright © Three Mas Kentir All rights reserved");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -177,7 +177,7 @@ public class login extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(100, 100, 100)
                         .addComponent(jLabel7)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 278, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 265, Short.MAX_VALUE)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -210,6 +210,14 @@ public class login extends javax.swing.JFrame {
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
         String user = txtUser.getText();
         String pass = new String(txtPass.getPassword());
+        
+        
+        // pop up error saat form kosong
+        if (user.isEmpty() || pass.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Username atau Password tidak boleh kosong!", "Input Error", JOptionPane.WARNING_MESSAGE);
+            return; 
+        }
+        
         try {
             Connection c = Koneksi.Go();
             Statement s = c.createStatement();

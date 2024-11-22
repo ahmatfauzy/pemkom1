@@ -8,6 +8,8 @@ import java.sql.Statement;
 import javax.swing.JFrame;
 import javax.swing.table.DefaultTableModel;
 import UILogin.Koneksi;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import javax.swing.JOptionPane;
 
 
@@ -56,6 +58,7 @@ public class DashAdm_Akun extends javax.swing.JFrame {
         btnHome = new rojeru_san.complementos.RSButtonHover();
         btnAkun = new rojeru_san.complementos.RSButtonHover();
         btnLogout1 = new rojeru_san.complementos.RSButtonHover();
+        jPanel3 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         jLabel3 = new javax.swing.JLabel();
@@ -79,12 +82,12 @@ public class DashAdm_Akun extends javax.swing.JFrame {
 
         jLabel2.setFont(new java.awt.Font("Poppins", 1, 36)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(240, 240, 240));
-        jLabel2.setText("OnlineShop");
+        jLabel2.setText("Point Of Sales");
         jLabel2.setToolTipText("");
         jLabel2.setVerticalAlignment(javax.swing.SwingConstants.TOP);
         header.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 17, -1, -1));
 
-        jPanel2.setBackground(new java.awt.Color(102, 255, 102));
+        jPanel2.setBackground(new java.awt.Color(12, 139, 139));
 
         txtNamaProfile.setFont(new java.awt.Font("Calibri", 1, 24)); // NOI18N
         txtNamaProfile.setForeground(new java.awt.Color(240, 240, 240));
@@ -101,16 +104,15 @@ public class DashAdm_Akun extends javax.swing.JFrame {
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap(114, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtNamaProfile)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(61, 61, 61)
-                        .addComponent(txtNamaProfile))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(80, 80, 80)
+                        .addGap(19, 19, 19)
                         .addComponent(txtLevel)))
-                .addGap(18, 18, 18)
+                .addGap(92, 92, 92)
                 .addComponent(jLabel1)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(214, 214, 214))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -125,7 +127,7 @@ public class DashAdm_Akun extends javax.swing.JFrame {
                 .addContainerGap(24, Short.MAX_VALUE))
         );
 
-        header.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 10, 420, 80));
+        header.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(1030, 10, 530, 80));
 
         PanelUtama.add(header, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -10, 1380, 90));
 
@@ -174,6 +176,21 @@ public class DashAdm_Akun extends javax.swing.JFrame {
 
         PanelUtama.add(sidebar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 83, -1, 940));
 
+        jPanel3.setBackground(new java.awt.Color(51, 51, 51));
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 220, Short.MAX_VALUE)
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
+
+        PanelUtama.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, -1, -1));
+
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null},
@@ -187,7 +204,7 @@ public class DashAdm_Akun extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(jTable1);
 
-        PanelUtama.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 207, 1120, 370));
+        PanelUtama.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 207, 1080, 370));
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/SEARCH-25.png"))); // NOI18N
         PanelUtama.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(1320, 110, -1, -1));
@@ -337,6 +354,8 @@ public class DashAdm_Akun extends javax.swing.JFrame {
             E.setLV(LV);
             E.setVisible(true); 
 //            DISINI DITEMPAT INI ERROR !!!!
+
+
         }
     }//GEN-LAST:event_buttonEditActionPerformed
 
@@ -362,6 +381,17 @@ public class DashAdm_Akun extends javax.swing.JFrame {
                     Statement S = K.createStatement();
                     S.executeUpdate(Q);
                     viewdata(""); 
+                    
+                    //format tanggal
+                    Date d = new Date();
+                    SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy H:m:s z");
+                    String tanggal = sdf.format(d);
+
+
+                    Function.logActivity("\n["+tanggal+"] Hapus user berhasil "); 
+//                    JOptionPane.showMessageDialog(this, "Data berhasil disimpan");
+                    jTable1.requestFocus();
+                    
                 } catch (Exception e) {
                 }
             }else {
@@ -468,6 +498,7 @@ public class DashAdm_Akun extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
     private static javax.swing.JTable jTable1;
     private rojeru_san.complementos.RSButtonHover rSButtonHover3;

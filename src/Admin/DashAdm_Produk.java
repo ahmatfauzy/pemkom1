@@ -1,14 +1,21 @@
 
 package Admin;
 
+import UILogin.Koneksi;
 import UILogin.UserProfile;
 import UILogin.login;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.Statement;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 public class DashAdm_Produk extends javax.swing.JFrame {
 
     UserProfile u;
-    
     
     /**
      * Creates new form OwnerPage
@@ -24,6 +31,7 @@ public class DashAdm_Produk extends javax.swing.JFrame {
         txtNamaProfile.setText(u.getFullname());
         txtLevel.setText(u.getLevel());
 //        txtTextNama.setText(u.getFullname());
+        viewDataProduk("");
     }
 
     /**
@@ -46,8 +54,15 @@ public class DashAdm_Produk extends javax.swing.JFrame {
         btnHome = new rojeru_san.complementos.RSButtonHover();
         btnAkun = new rojeru_san.complementos.RSButtonHover();
         btnLogout1 = new rojeru_san.complementos.RSButtonHover();
-        jLabel3 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tblProduk = new javax.swing.JTable();
+        buttonTambah = new rojeru_san.complementos.RSButtonHover();
+        buttonHapus = new rojeru_san.complementos.RSButtonHover();
+        buttonEdit = new rojeru_san.complementos.RSButtonHover();
+        btnRefresh = new rojeru_san.complementos.RSButtonHover();
+        jLabel4 = new javax.swing.JLabel();
+        txtSearch = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Halaman Owner");
@@ -74,7 +89,7 @@ public class DashAdm_Produk extends javax.swing.JFrame {
 
         jLabel2.setFont(new java.awt.Font("Poppins", 1, 36)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(240, 240, 240));
-        jLabel2.setText("OnlineShop");
+        jLabel2.setText("Point Of Sales");
         jLabel2.setToolTipText("");
         jLabel2.setVerticalAlignment(javax.swing.SwingConstants.TOP);
         header.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 17, -1, -1));
@@ -126,9 +141,6 @@ public class DashAdm_Produk extends javax.swing.JFrame {
 
         PanelUtama.add(sidebar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 83, -1, 940));
 
-        jLabel3.setText("menu produk");
-        PanelUtama.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 260, -1, -1));
-
         jPanel1.setBackground(new java.awt.Color(51, 51, 51));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -143,6 +155,72 @@ public class DashAdm_Produk extends javax.swing.JFrame {
         );
 
         PanelUtama.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, -1, -1));
+
+        tblProduk.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null}
+            },
+            new String [] {
+                "ID", "No", "produk_kode", "nama", "gambar", "kategori", "produk supplier", "harga jual", "harga beli", "stok", "deskripsi"
+            }
+        ));
+        jScrollPane1.setViewportView(tblProduk);
+
+        PanelUtama.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 217, 1080, 360));
+
+        buttonTambah.setText("Tambah");
+        buttonTambah.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonTambahActionPerformed(evt);
+            }
+        });
+        PanelUtama.add(buttonTambah, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 110, 150, -1));
+
+        buttonHapus.setBackground(new java.awt.Color(255, 0, 0));
+        buttonHapus.setText("Hapus");
+        buttonHapus.setColorHover(new java.awt.Color(153, 0, 0));
+        buttonHapus.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonHapusActionPerformed(evt);
+            }
+        });
+        PanelUtama.add(buttonHapus, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 110, 150, -1));
+
+        buttonEdit.setBackground(new java.awt.Color(255, 102, 0));
+        buttonEdit.setText("Edit");
+        buttonEdit.setColorHover(new java.awt.Color(153, 102, 0));
+        buttonEdit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonEditActionPerformed(evt);
+            }
+        });
+        PanelUtama.add(buttonEdit, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 110, 150, -1));
+
+        btnRefresh.setBackground(new java.awt.Color(51, 255, 51));
+        btnRefresh.setText("Refresh");
+        btnRefresh.setColorHover(new java.awt.Color(153, 102, 0));
+        btnRefresh.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRefreshActionPerformed(evt);
+            }
+        });
+        PanelUtama.add(btnRefresh, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 110, 150, -1));
+
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/SEARCH-25.png"))); // NOI18N
+        PanelUtama.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(1320, 110, -1, -1));
+
+        txtSearch.setBackground(new java.awt.Color(242, 242, 242));
+        txtSearch.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
+        txtSearch.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(0, 0, 0)));
+        txtSearch.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtSearchActionPerformed(evt);
+            }
+        });
+        PanelUtama.add(txtSearch, new org.netbeans.lib.awtextra.AbsoluteConstraints(1080, 100, 270, 40));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -187,6 +265,69 @@ public class DashAdm_Produk extends javax.swing.JFrame {
         login l = new login();
         l.setVisible(true);
     }//GEN-LAST:event_btnLogout1ActionPerformed
+
+    private void buttonTambahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonTambahActionPerformed
+        TambahProduk1 t = new TambahProduk1(this, rootPaneCheckingEnabled);
+        t.setVisible(true);
+        this.setExtendedState(JFrame.MAXIMIZED_VERT);
+    }//GEN-LAST:event_buttonTambahActionPerformed
+
+    private void buttonHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonHapusActionPerformed
+        int n = tblProduk.getSelectedRow();
+        if(n != -1){
+            int id = Integer.parseInt(tblProduk.getValueAt(n, 0).toString());
+            //            JOptionPane.showMessageDialog(this, id);
+
+            int pilihan = JOptionPane.showConfirmDialog(this,
+                "Apakah Anda yakin untuk menghapus data user ini?",
+                "Hapus Data",JOptionPane.YES_NO_OPTION);
+            if(pilihan == 0){
+                //yes
+                String Q = "DELETE FROM produk WHERE id="+id+" ";
+                try {
+                    Connection K = Koneksi.Go();
+                    Statement S = K.createStatement();
+                    S.executeUpdate(Q);
+                    viewDataProduk("");
+                    
+                    //format tanggal
+                    Date d = new Date();
+                    SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy H:m:s z");
+                    String tanggal = sdf.format(d);
+
+                    Function.logActivity("\n["+tanggal+"] Hapus produk berhasil "); 
+//                    JOptionPane.showMessageDialog(this, "Data berhasil disimpan");
+                    tblProduk.requestFocus();
+                } catch (Exception e) {
+                }
+            }else {
+                //no
+            }
+
+        }else {
+            JOptionPane.showMessageDialog(this, "Anda belum memilih data");
+
+        }
+    }//GEN-LAST:event_buttonHapusActionPerformed
+ 
+    private void buttonEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonEditActionPerformed
+        
+    }//GEN-LAST:event_buttonEditActionPerformed
+
+    private void btnRefreshActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRefreshActionPerformed
+        viewDataProduk("");
+    }//GEN-LAST:event_btnRefreshActionPerformed
+
+    private void txtSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSearchActionPerformed
+//         TODO add your handling code here:
+        String key = txtSearch.getText();
+        String w = "WHERE "
+        + "nama_produk LIKE '%"+key+"%' "
+        + "OR produk_supplier LIKE '%"+key+"%' "
+        + "OR harga_produk_beli LIKE '%"+key+"%' "
+        + "OR produk_kode LIKE '%"+key+"%'";
+        viewDataProduk(w);
+    }//GEN-LAST:event_txtSearchActionPerformed
 
     /**
      * @param args the command line arguments
@@ -260,13 +401,59 @@ public class DashAdm_Produk extends javax.swing.JFrame {
     private rojeru_san.complementos.RSButtonHover btnHome;
     private rojeru_san.complementos.RSButtonHover btnLogout1;
     private rojeru_san.complementos.RSButtonHover btnProduk;
+    private rojeru_san.complementos.RSButtonHover btnRefresh;
+    private static rojeru_san.complementos.RSButtonHover buttonEdit;
+    private rojeru_san.complementos.RSButtonHover buttonHapus;
+    private rojeru_san.complementos.RSButtonHover buttonTambah;
     private javax.swing.JPanel header;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JPanel sidebar;
+    public static javax.swing.JTable tblProduk;
     private javax.swing.JLabel txtLevel;
     private javax.swing.JLabel txtNamaProfile;
+    private javax.swing.JTextField txtSearch;
     // End of variables declaration//GEN-END:variables
+
+    
+    
+    public static void viewDataProduk(String where) {
+        try {
+            DefaultTableModel m = (DefaultTableModel) tblProduk.getModel();
+            m.getDataVector().removeAllElements();
+            Connection K = Koneksi.Go();
+            Statement S = K.createStatement();
+            String Q = "SELECT * FROM produk "+where;
+            ResultSet R = S.executeQuery(Q);
+            int n = 1;
+            while (R.next()) {                 
+                int id = R.getInt("ID");
+                
+//                String idProfile = R.getString("ID_profile");
+                int kodeProduk = R.getInt("produk_kode");
+                String namaProduk = R.getString("nama_produk");
+                String gambarProduk = R.getString("gambar_produk");
+                String produkKategori = R.getString("produk_kategori");
+                String produkSupplier = R.getString("produk_supplier");
+                int hargaBeli = R.getInt("harga_produk_beli");
+                int hargaJual = R.getInt("harga_produk_jual");
+                int stok = R.getInt("produk_stok");
+                String deskripsi = R.getString("deskripsi_produk");
+                
+                Object[] data = {id, n, kodeProduk, namaProduk, gambarProduk, produkKategori, produkSupplier, hargaBeli, hargaJual, stok, deskripsi};
+                m.addRow(data); 
+                n++;
+            }
+            
+            tblProduk.getColumnModel().getColumn(0).setMinWidth(0);
+            tblProduk.getColumnModel().getColumn(0).setMaxWidth(0);
+//            
+        } catch (Exception e) {
+            //error handling
+        }
+//        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
 }
