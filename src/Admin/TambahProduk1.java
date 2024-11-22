@@ -232,27 +232,23 @@ public class TambahProduk1 extends javax.swing.JDialog {
     }//GEN-LAST:event_txtNama7ActionPerformed
 
     private void rSButtonHover1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rSButtonHover1ActionPerformed
-        
-        String kodeProduk = txtNama.getText();
+        String kodeProduk = txtNama.getText(); // Pastikan ini adalah JTextField untuk kode produk
         String nama = txtNama2.getText();
         String gambar = txtNama3.getText();
         String produkSupplier = jComboBox2.getSelectedItem().toString();
         String produkKategori = jComboBox1.getSelectedItem().toString();
-        int hargaJual = Integer.parseInt(txtNama4.getText());
-        int hargaBeli = Integer.parseInt(txtNama5.getText());
-        int stok = Integer.parseInt(txtNama6.getText());
+        int hargaJual;
+        int hargaBeli;
+        int stok;
         String deskripsi = txtNama7.getText();
-        //pengecekan
-        
-        
-        //pop up saat form kosong
+
+        // Validasi input
         if (kodeProduk.isEmpty() || nama.isEmpty() || gambar.isEmpty() || produkSupplier.isEmpty() || produkKategori.isEmpty() || deskripsi.isEmpty()) {
             JOptionPane.showMessageDialog(this, "Semua field harus diisi!", "Input Error", JOptionPane.WARNING_MESSAGE);
             return;  
         }
 
         // Cek apakah input harga dan stok berupa angka
-//        int hargaJual, hargaBeli, stok;
         try {
             hargaJual = Integer.parseInt(txtNama4.getText());
             hargaBeli = Integer.parseInt(txtNama5.getText());
@@ -264,12 +260,10 @@ public class TambahProduk1 extends javax.swing.JDialog {
 
         try {
             Connection K = Koneksi.Go();
-            String Q = "INSERT INTO produk "
-                    + "(produk_kode,nama_produk,gambar_produk,produk_supplier, produk_kategori,harga_produk_jual,harga_produk_beli,produk_stok,deskripsi_produk) "
-                    + "VALUES (?,?,?,?,?,?,?,?,?)";
-            
+            String Q = "INSERT INTO produk (produk_kode, nama_produk, gambar_produk, produk_supplier, produk_kategori, harga_produk_jual, harga_produk_beli, produk_stok, deskripsi_produk) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+
             PreparedStatement PS = K.prepareStatement(Q);
-            PS.setString(1, kodeProduk);  
+            PS.setString(1, kodeProduk);  // Kode produk sebagai VARCHAR
             PS.setString(2, nama);
             PS.setString(3, gambar);
             PS.setString(4, produkSupplier);
@@ -280,25 +274,18 @@ public class TambahProduk1 extends javax.swing.JDialog {
             PS.setString(9, deskripsi);
 
             PS.executeUpdate();
-            
             DashAdm_Produk.viewDataProduk("");
             JOptionPane.showMessageDialog(this, "Data berhasil disimpan");
-            
-            //format tanggal
+
+            // Format tanggal
             Date d = new Date();
             SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy H:m:s z");
             String tanggal = sdf.format(d);
-            
-            
+
             Function.logActivity("\n["+tanggal+"] Penambahan produk baru berhasil "); 
-//            JOptionPane.showMessageDialog(this, "Data berhasil disimpan");
             txtNama2.requestFocus();
-        }
-        catch (SQLException e) {
+        } catch (SQLException e) {
             JOptionPane.showMessageDialog(this, "Error saat menyimpan data: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
-            e.printStackTrace();
-        } catch (NumberFormatException e) {
-            JOptionPane.showMessageDialog(this, "Error: Pastikan semua input angka diisi dengan benar.", "Input Error", JOptionPane.WARNING_MESSAGE);
             e.printStackTrace();
         }
     }//GEN-LAST:event_rSButtonHover1ActionPerformed

@@ -464,7 +464,7 @@ public class DashAdm_Produk extends javax.swing.JFrame {
                 int id = R.getInt("ID");
                 
 //                String idProfile = R.getString("ID_profile");
-                int kodeProduk = R.getInt("produk_kode");
+                String kodeProduk = R.getString("produk_kode");
                 String namaProduk = R.getString("nama_produk");
                 String gambarProduk = R.getString("gambar_produk");
                 String produkKategori = R.getString("produk_kategori");

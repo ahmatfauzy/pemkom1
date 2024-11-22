@@ -237,7 +237,7 @@ public class EditProduk1 extends javax.swing.JDialog {
 
     private void btnSimpanEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSimpanEditActionPerformed
         // Ambil data dari form
-        String kodeProduk = txtKodeProduk.getText();
+        String kodeProduk = txtKodeProduk.getText(); // Kode produk tetap sebagai VARCHAR
         String namaProduk = txtNamaProduk.getText();
         String gambarProduk = txtGambarProduk.getText();
         String produkSupplier = comboSupplierProduk.getSelectedItem().toString();
@@ -248,10 +248,7 @@ public class EditProduk1 extends javax.swing.JDialog {
         String deskripsi = txtDeskripsiProduk.getText();
 
         // Validasi input
-        if (
-//                kodeProduk.isEmpty() || 
-                namaProduk.isEmpty() || gambarProduk.isEmpty() || 
-            produkSupplier.isEmpty() || produkKategori.isEmpty() || deskripsi.isEmpty()) {
+        if (namaProduk.isEmpty() || gambarProduk.isEmpty() || produkSupplier.isEmpty() || produkKategori.isEmpty() || deskripsi.isEmpty()) {
             JOptionPane.showMessageDialog(this, "Semua field harus diisi!", "Input Error", JOptionPane.WARNING_MESSAGE);
             return;  
         }
@@ -262,23 +259,13 @@ public class EditProduk1 extends javax.swing.JDialog {
             hargaBeli = Integer.parseInt(txtHargaBeli.getText());
             stok = Integer.parseInt(txtStokProduk.getText());
         } catch (NumberFormatException e) {
-            JOptionPane.showMessageDialog(this, "Pastikan harga dan stok diisi dengan angka yang valid.", "Input Error", JOptionPane.WARNING_MESSAGE);
+//            JOptionPane.showMessageDialog(this, "Pastikan harga dan stok diisi dengan angka yang valid.", "Input Error", JOptionPane.WARNING _MESSAGE);
             return;  
         }
 
-        // Simpan data ke database
         try {
             Connection K = Koneksi.Go();
-            if (K == null) {
-                JOptionPane.showMessageDialog(this, "Koneksi database gagal!", "Error", JOptionPane.ERROR_MESSAGE);
-                return;
-            }
-
-            String Q = "UPDATE produk SET "
-                    + "nama_produk=?, gambar_produk=?, produk_supplier=?, "
-                    + "produk_kategori=?, harga_produk_jual=?, harga_produk_beli=?, "
-                    + "produk_stok=?, deskripsi_produk=? "
-                    + "WHERE produk_kode=?"; 
+            String Q = "UPDATE produk SET nama_produk=?, gambar_produk=?, produk_supplier=?, produk_kategori=?, harga_produk_jual=?, harga_produk_beli=?, produk_stok=?, deskripsi_produk=? WHERE produk_kode=?";
 
             PreparedStatement PS = K.prepareStatement(Q);
             PS.setString(1, namaProduk);
@@ -289,24 +276,24 @@ public class EditProduk1 extends javax.swing.JDialog {
             PS.setInt(6, hargaBeli);
             PS.setInt(7, stok);
             PS.setString(8, deskripsi);
-            PS.setString(9, kodeProduk); 
+            PS.setString(9, kodeProduk);  // Kode produk sebagai VARCHAR
 
-            int affectedRows = PS.executeUpdate();
-            System.out.println("Jumlah baris yang terpengaruh: " + affectedRows); // Debugging
+            PS.executeUpdate();
+            DashAdm_Produk.viewDataProduk("");
+            JOptionPane.showMessageDialog(this, "Data berhasil diperbarui");
 
-            if (affectedRows > 0) {
-                JOptionPane.showMessageDialog(this, "Data berhasil diperbar ui"); 
-                DashAdm_Produk.viewDataProduk(""); 
-            } else {
-                JOptionPane.showMessageDialog(this, "Gagal memperbarui data", "Error", JOptionPane.ERROR_MESSAGE);
-            }
-
+//            // Format tanggal
+//            Function d = new Date();
+//            SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy H:m:s z");
+//            String tanggal = sdf.format(d);
+//
+//            Function.logActivity("\n["+tanggal+"] Pengeditan produk berhasil "); 
+//            txtNamaProduk.requestFocus();
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(this, "Error saat menyimpan data: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
-            e.printStackTrace(); 
+            JOptionPane.showMessageDialog(this, "Error saat memperbarui data: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+            e.printStackTrace();
         }
-
-        this.setVisible(false); 
+//        this.setVisible(false); 
     }//GEN-LAST:event_btnSimpanEditActionPerformed
 
     private void btnBatalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBatalActionPerformed
@@ -467,51 +454,6 @@ public class EditProduk1 extends javax.swing.JDialog {
         this.DS = DS;
     }
 
-//    
-//    public void setKP(int KP) {
-//    this.KP = KP;
-//    txtNama.setText(String.valueOf(KP)); // Kode Produk
-//    }
-//
-//    public void setNP(String NP) {
-//        this.NP = NP;
-//        txtNama2.setText(NP); // Nama Produk
-//    }
-//
-//    public void setGP(String GP) {
-//        this.GP = GP;
-//        txtNama3.setText(GP); // Gambar
-//    }
-//
-//    public void setPSup(String PSup) {
-//        this.PSup = PSup;
-//        // Set produk supplier di jComboBox2 jika perlu
-//    }
-//
-//    public void setPK(String PK) {
-//        this.PK = PK;
-//        // Set produk kategori di jComboBox1 jika perlu
-//    }
-//
-//    public void setHJ(int HJ) {
-//        this.HJ = HJ;
-//        txtNama4.setText(String.valueOf(HJ)); // Harga Jual
-//    }
-//
-//    public void setHB(int HB) {
-//        this.HB = HB;
-//        txtNama5.setText(String.valueOf(HB)); // Harga Beli
-//    }
-//
-//    public void setST(int ST) {
-//        this.ST = ST;
-//        txtNama6.setText(String.valueOf(ST)); // Stok
-//    }
-//
-//    public void setDS(String DS) {
-//        this.DS = DS;
-//        txtNama7.setText(DS); // Deskripsi
-//    }
     
     private void viewCategory(String tableName, JComboBox cmb) {
         try {
