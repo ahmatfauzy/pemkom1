@@ -13,8 +13,10 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.sql.PreparedStatement;
 import Admin.DashAdm_Produk;
+import static Admin.DashAdm_Produk.viewDataProduk;
 
 import javax.swing.JComboBox;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -38,8 +40,8 @@ public class EditProduk1 extends javax.swing.JDialog {
     public EditProduk1(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
-        viewCategory("produk_kategori", jComboBox1);
-        viewCategory("supplier", jComboBox2);
+        viewCategory("produk_kategori", comboSupplierProduk);
+        viewCategory("supplier", comboKategoriProduk);
     }
 
     /**
@@ -53,24 +55,24 @@ public class EditProduk1 extends javax.swing.JDialog {
 
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        txtNama = new javax.swing.JTextField();
+        txtKodeProduk = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        txtNama2 = new javax.swing.JTextField();
-        txtNama3 = new javax.swing.JTextField();
+        txtNamaProduk = new javax.swing.JTextField();
+        txtGambarProduk = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
-        jComboBox2 = new javax.swing.JComboBox<>();
+        comboKategoriProduk = new javax.swing.JComboBox<>();
         jLabel8 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
-        txtNama6 = new javax.swing.JTextField();
+        txtStokProduk = new javax.swing.JTextField();
         jLabel11 = new javax.swing.JLabel();
-        txtNama5 = new javax.swing.JTextField();
+        txtHargaBeli = new javax.swing.JTextField();
         jLabel10 = new javax.swing.JLabel();
-        txtNama4 = new javax.swing.JTextField();
+        txtHargaJual = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
-        txtNama7 = new javax.swing.JTextField();
+        txtDeskripsiProduk = new javax.swing.JTextField();
         jLabel12 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        comboSupplierProduk = new javax.swing.JComboBox<>();
         jLabel6 = new javax.swing.JLabel();
         btnSimpanEdit = new rojeru_san.complementos.RSButtonHover();
         btnBatal = new rojeru_san.complementos.RSButtonHover();
@@ -84,13 +86,12 @@ public class EditProduk1 extends javax.swing.JDialog {
         jLabel1.setText("Form Edit Produk");
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 10, -1, -1));
 
-        txtNama.setEditable(false);
-        txtNama.addActionListener(new java.awt.event.ActionListener() {
+        txtKodeProduk.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtNamaActionPerformed(evt);
+                txtKodeProdukActionPerformed(evt);
             }
         });
-        jPanel1.add(txtNama, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 80, 90, 30));
+        jPanel1.add(txtKodeProduk, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 80, 90, 30));
 
         jLabel4.setText("Kode Produk");
         jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 60, 80, 20));
@@ -98,30 +99,30 @@ public class EditProduk1 extends javax.swing.JDialog {
         jLabel5.setText("Nama");
         jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 120, 80, 20));
 
-        txtNama2.addActionListener(new java.awt.event.ActionListener() {
+        txtNamaProduk.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtNama2ActionPerformed(evt);
+                txtNamaProdukActionPerformed(evt);
             }
         });
-        jPanel1.add(txtNama2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 140, 253, 30));
+        jPanel1.add(txtNamaProduk, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 140, 253, 30));
 
-        txtNama3.addActionListener(new java.awt.event.ActionListener() {
+        txtGambarProduk.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtNama3ActionPerformed(evt);
+                txtGambarProdukActionPerformed(evt);
             }
         });
-        jPanel1.add(txtNama3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 210, 180, 30));
+        jPanel1.add(txtGambarProduk, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 210, 180, 30));
 
         jLabel7.setText("Gambar");
         jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 190, 80, 20));
 
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jComboBox2.addActionListener(new java.awt.event.ActionListener() {
+        comboKategoriProduk.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        comboKategoriProduk.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox2ActionPerformed(evt);
+                comboKategoriProdukActionPerformed(evt);
             }
         });
-        jPanel1.add(jComboBox2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 280, -1, 30));
+        jPanel1.add(comboKategoriProduk, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 280, -1, 30));
 
         jLabel8.setText("Produk Supplier");
         jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 250, 100, 40));
@@ -134,48 +135,48 @@ public class EditProduk1 extends javax.swing.JDialog {
         });
         jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 210, 60, 30));
 
-        txtNama6.addActionListener(new java.awt.event.ActionListener() {
+        txtStokProduk.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtNama6ActionPerformed(evt);
+                txtStokProdukActionPerformed(evt);
             }
         });
-        jPanel1.add(txtNama6, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 210, 253, 30));
+        jPanel1.add(txtStokProduk, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 210, 253, 30));
 
         jLabel11.setText("Stok");
         jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 190, 80, -1));
 
-        txtNama5.addActionListener(new java.awt.event.ActionListener() {
+        txtHargaBeli.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtNama5ActionPerformed(evt);
+                txtHargaBeliActionPerformed(evt);
             }
         });
-        jPanel1.add(txtNama5, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 140, 253, 30));
+        jPanel1.add(txtHargaBeli, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 140, 253, 30));
 
         jLabel10.setText("Harga Jual");
         jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 120, 80, 20));
 
-        txtNama4.addActionListener(new java.awt.event.ActionListener() {
+        txtHargaJual.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtNama4ActionPerformed(evt);
+                txtHargaJualActionPerformed(evt);
             }
         });
-        jPanel1.add(txtNama4, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 80, 253, 30));
+        jPanel1.add(txtHargaJual, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 80, 253, 30));
 
         jLabel9.setText("Harga Jual");
         jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 60, 80, 20));
 
-        txtNama7.addActionListener(new java.awt.event.ActionListener() {
+        txtDeskripsiProduk.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtNama7ActionPerformed(evt);
+                txtDeskripsiProdukActionPerformed(evt);
             }
         });
-        jPanel1.add(txtNama7, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 280, 250, 80));
+        jPanel1.add(txtDeskripsiProduk, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 280, 250, 80));
 
         jLabel12.setText("Deskripsi");
         jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 260, 80, 20));
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jPanel1.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 350, -1, 30));
+        comboSupplierProduk.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jPanel1.add(comboSupplierProduk, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 350, -1, 30));
 
         jLabel6.setText("Kategori");
         jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 330, 80, 20));
@@ -202,49 +203,119 @@ public class EditProduk1 extends javax.swing.JDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txtNamaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNamaActionPerformed
+    private void txtKodeProdukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtKodeProdukActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtNamaActionPerformed
+    }//GEN-LAST:event_txtKodeProdukActionPerformed
 
-    private void txtNama2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNama2ActionPerformed
+    private void txtNamaProdukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNamaProdukActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtNama2ActionPerformed
+    }//GEN-LAST:event_txtNamaProdukActionPerformed
 
-    private void txtNama3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNama3ActionPerformed
+    private void txtGambarProdukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtGambarProdukActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtNama3ActionPerformed
+    }//GEN-LAST:event_txtGambarProdukActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void txtNama6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNama6ActionPerformed
+    private void txtStokProdukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtStokProdukActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtNama6ActionPerformed
+    }//GEN-LAST:event_txtStokProdukActionPerformed
 
-    private void txtNama5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNama5ActionPerformed
+    private void txtHargaBeliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtHargaBeliActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtNama5ActionPerformed
+    }//GEN-LAST:event_txtHargaBeliActionPerformed
 
-    private void txtNama4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNama4ActionPerformed
+    private void txtHargaJualActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtHargaJualActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtNama4ActionPerformed
+    }//GEN-LAST:event_txtHargaJualActionPerformed
 
-    private void txtNama7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNama7ActionPerformed
+    private void txtDeskripsiProdukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDeskripsiProdukActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtNama7ActionPerformed
+    }//GEN-LAST:event_txtDeskripsiProdukActionPerformed
 
     private void btnSimpanEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSimpanEditActionPerformed
-        
+        // Ambil data dari form
+        String kodeProduk = txtKodeProduk.getText();
+        String namaProduk = txtNamaProduk.getText();
+        String gambarProduk = txtGambarProduk.getText();
+        String produkSupplier = comboSupplierProduk.getSelectedItem().toString();
+        String produkKategori = comboKategoriProduk.getSelectedItem().toString();
+        int hargaJual;
+        int hargaBeli;
+        int stok;
+        String deskripsi = txtDeskripsiProduk.getText();
+
+        // Validasi input
+        if (
+//                kodeProduk.isEmpty() || 
+                namaProduk.isEmpty() || gambarProduk.isEmpty() || 
+            produkSupplier.isEmpty() || produkKategori.isEmpty() || deskripsi.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Semua field harus diisi!", "Input Error", JOptionPane.WARNING_MESSAGE);
+            return;  
+        }
+
+        // Cek apakah input harga dan stok berupa angka
+        try {
+            hargaJual = Integer.parseInt(txtHargaJual.getText());
+            hargaBeli = Integer.parseInt(txtHargaBeli.getText());
+            stok = Integer.parseInt(txtStokProduk.getText());
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, "Pastikan harga dan stok diisi dengan angka yang valid.", "Input Error", JOptionPane.WARNING_MESSAGE);
+            return;  
+        }
+
+        // Simpan data ke database
+        try {
+            Connection K = Koneksi.Go();
+            if (K == null) {
+                JOptionPane.showMessageDialog(this, "Koneksi database gagal!", "Error", JOptionPane.ERROR_MESSAGE);
+                return;
+            }
+
+            String Q = "UPDATE produk SET "
+                    + "nama_produk=?, gambar_produk=?, produk_supplier=?, "
+                    + "produk_kategori=?, harga_produk_jual=?, harga_produk_beli=?, "
+                    + "produk_stok=?, deskripsi_produk=? "
+                    + "WHERE produk_kode=?"; 
+
+            PreparedStatement PS = K.prepareStatement(Q);
+            PS.setString(1, namaProduk);
+            PS.setString(2, gambarProduk);
+            PS.setString(3, produkSupplier);
+            PS.setString(4, produkKategori);
+            PS.setInt(5, hargaJual);
+            PS.setInt(6, hargaBeli);
+            PS.setInt(7, stok);
+            PS.setString(8, deskripsi);
+            PS.setString(9, kodeProduk); 
+
+            int affectedRows = PS.executeUpdate();
+            System.out.println("Jumlah baris yang terpengaruh: " + affectedRows); // Debugging
+
+            if (affectedRows > 0) {
+                JOptionPane.showMessageDialog(this, "Data berhasil diperbar ui"); 
+                DashAdm_Produk.viewDataProduk(""); 
+            } else {
+                JOptionPane.showMessageDialog(this, "Gagal memperbarui data", "Error", JOptionPane.ERROR_MESSAGE);
+            }
+
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(this, "Error saat menyimpan data: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+            e.printStackTrace(); 
+        }
+
+        this.setVisible(false); 
     }//GEN-LAST:event_btnSimpanEditActionPerformed
 
     private void btnBatalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBatalActionPerformed
         this.setVisible(false);
     }//GEN-LAST:event_btnBatalActionPerformed
 
-    private void jComboBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox2ActionPerformed
+    private void comboKategoriProdukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboKategoriProdukActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox2ActionPerformed
+    }//GEN-LAST:event_comboKategoriProdukActionPerformed
 
     /**
      * @param args the command line arguments
@@ -292,9 +363,9 @@ public class EditProduk1 extends javax.swing.JDialog {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private rojeru_san.complementos.RSButtonHover btnBatal;
     private rojeru_san.complementos.RSButtonHover btnSimpanEdit;
+    private javax.swing.JComboBox<String> comboKategoriProduk;
+    private javax.swing.JComboBox<String> comboSupplierProduk;
     private javax.swing.JButton jButton1;
-    private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -307,13 +378,13 @@ public class EditProduk1 extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JTextField txtNama;
-    private javax.swing.JTextField txtNama2;
-    private javax.swing.JTextField txtNama3;
-    private javax.swing.JTextField txtNama4;
-    private javax.swing.JTextField txtNama5;
-    private javax.swing.JTextField txtNama6;
-    private javax.swing.JTextField txtNama7;
+    private javax.swing.JTextField txtDeskripsiProduk;
+    private javax.swing.JTextField txtGambarProduk;
+    private javax.swing.JTextField txtHargaBeli;
+    private javax.swing.JTextField txtHargaJual;
+    private javax.swing.JTextField txtKodeProduk;
+    private javax.swing.JTextField txtNamaProduk;
+    private javax.swing.JTextField txtStokProduk;
     // End of variables declaration//GEN-END:variables
 
     public int getId() {
@@ -396,6 +467,52 @@ public class EditProduk1 extends javax.swing.JDialog {
         this.DS = DS;
     }
 
+//    
+//    public void setKP(int KP) {
+//    this.KP = KP;
+//    txtNama.setText(String.valueOf(KP)); // Kode Produk
+//    }
+//
+//    public void setNP(String NP) {
+//        this.NP = NP;
+//        txtNama2.setText(NP); // Nama Produk
+//    }
+//
+//    public void setGP(String GP) {
+//        this.GP = GP;
+//        txtNama3.setText(GP); // Gambar
+//    }
+//
+//    public void setPSup(String PSup) {
+//        this.PSup = PSup;
+//        // Set produk supplier di jComboBox2 jika perlu
+//    }
+//
+//    public void setPK(String PK) {
+//        this.PK = PK;
+//        // Set produk kategori di jComboBox1 jika perlu
+//    }
+//
+//    public void setHJ(int HJ) {
+//        this.HJ = HJ;
+//        txtNama4.setText(String.valueOf(HJ)); // Harga Jual
+//    }
+//
+//    public void setHB(int HB) {
+//        this.HB = HB;
+//        txtNama5.setText(String.valueOf(HB)); // Harga Beli
+//    }
+//
+//    public void setST(int ST) {
+//        this.ST = ST;
+//        txtNama6.setText(String.valueOf(ST)); // Stok
+//    }
+//
+//    public void setDS(String DS) {
+//        this.DS = DS;
+//        txtNama7.setText(DS); // Deskripsi
+//    }
+    
     private void viewCategory(String tableName, JComboBox cmb) {
         try {
         cmb.removeAllItems();

@@ -236,6 +236,8 @@ public class DashAdm_Produk extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        getAccessibleContext().setAccessibleName("Halaman Admin");
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
@@ -311,7 +313,36 @@ public class DashAdm_Produk extends javax.swing.JFrame {
     }//GEN-LAST:event_buttonHapusActionPerformed
  
     private void buttonEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonEditActionPerformed
-        
+        int n = tblProduk.getSelectedRow();
+        if(n != -1){
+            // Ambil data dari tabel
+            int id = Integer.parseInt(tblProduk.getValueAt(n, 0).toString());
+            String kodeProduk = tblProduk.getValueAt(n, 2).toString();
+            String namaProduk = tblProduk.getValueAt(n, 3).toString();
+            String gambarProduk = tblProduk.getValueAt(n, 4).toString();
+            String produkKategori = tblProduk.getValueAt(n, 5).toString();
+            String produkSupplier = tblProduk.getValueAt(n, 6).toString();
+            int hargaJual = Integer.parseInt(tblProduk.getValueAt(n, 7).toString());
+            int hargaBeli = Integer.parseInt(tblProduk.getValueAt(n, 8).toString());
+            int stok = Integer.parseInt(tblProduk.getValueAt(n, 9).toString());
+            String deskripsi = tblProduk.getValueAt(n, 10).toString();
+
+            // Membuka form EditProduk1
+            EditProduk1 editProdukForm = new EditProduk1(this, true);
+            editProdukForm.setId(id);
+            editProdukForm.setKP(Integer.parseInt(kodeProduk));
+            editProdukForm.setNP(namaProduk);
+            editProdukForm.setGP(gambarProduk);
+            editProdukForm.setPSup(produkSupplier);
+            editProdukForm.setPK(produkKategori);
+            editProdukForm.setHJ(hargaJual);
+            editProdukForm.setHB(hargaBeli);
+            editProdukForm.setST(stok);
+            editProdukForm.setDS(deskripsi);
+            editProdukForm.setVisible(true); // Menampilkan form edit produk
+        } else {
+            JOptionPane.showMessageDialog(this, "Anda belum memilih produk untuk diedit.");
+        }
     }//GEN-LAST:event_buttonEditActionPerformed
 
     private void btnRefreshActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRefreshActionPerformed

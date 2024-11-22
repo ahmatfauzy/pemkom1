@@ -296,6 +296,8 @@ public class DashAdm_Akun extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        getAccessibleContext().setAccessibleName("Halaman Admin");
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
