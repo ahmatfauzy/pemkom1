@@ -328,9 +328,15 @@ public class DashAdm_Produk extends javax.swing.JFrame {
             String deskripsi = tblProduk.getValueAt(n, 10).toString();
 
             // Membuka form EditProduk1
-            EditProduk1 editProdukForm = new EditProduk1(this, true);
-            editProdukForm.setId(id);
-            editProdukForm.setKP(Integer.parseInt(kodeProduk));
+//            EditProduk1 editProdukForm = new EditProduk1(this, true);
+//            editProdukForm.setId(id);
+//            editProdukForm.setVisible(true);
+
+              EditProduk1 editProdukForm = new EditProduk1(this, true);
+            editProdukForm.setData(kodeProduk, namaProduk, gambarProduk, produkSupplier, produkKategori, hargaJual, hargaBeli, stok, deskripsi);
+            editProdukForm.setVisible(true);
+//            editProdukForm.setKP(Integer.parseInt(kodeProduk));
+            editProdukForm.setKP(kodeProduk);
             editProdukForm.setNP(namaProduk);
             editProdukForm.setGP(gambarProduk);
             editProdukForm.setPSup(produkSupplier);
@@ -350,13 +356,12 @@ public class DashAdm_Produk extends javax.swing.JFrame {
     }//GEN-LAST:event_btnRefreshActionPerformed
 
     private void txtSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSearchActionPerformed
-//         TODO add your handling code here:
         String key = txtSearch.getText();
         String w = "WHERE "
-        + "nama_produk LIKE '%"+key+"%' "
-        + "OR produk_supplier LIKE '%"+key+"%' "
-        + "OR harga_produk_beli LIKE '%"+key+"%' "
-        + "OR produk_kode LIKE '%"+key+"%'";
+        + "nama_produk LIKE '%" + key + "%' "
+        + "OR produk_supplier LIKE '%" + key + "%' "
+        + "OR produk_kode LIKE '%" + key + "%'"; 
+        System.out.println("Query pencarian: " + w); // Debugging
         viewDataProduk(w);
     }//GEN-LAST:event_txtSearchActionPerformed
 
@@ -483,6 +488,7 @@ public class DashAdm_Produk extends javax.swing.JFrame {
             tblProduk.getColumnModel().getColumn(0).setMaxWidth(0);
 //            
         } catch (Exception e) {
+            System.out.println("Kesalahan pada query");
             //error handling
         }
 //        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody

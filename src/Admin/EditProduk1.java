@@ -17,6 +17,7 @@ import static Admin.DashAdm_Produk.viewDataProduk;
 
 import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 
 /**
  *
@@ -24,8 +25,77 @@ import javax.swing.JOptionPane;
  */
 public class EditProduk1 extends javax.swing.JDialog {
 
+    
+    public void setData(String kode, String nama, String gambar, String supplier, String kategori, int hargaJual, int hargaBeli, int stok, String deskripsi) {
+        txtKodeProduk.setText(kode);
+        txtNamaProduk.setText(nama);
+        txtGambarProduk.setText(gambar);
+        comboSupplierProduk.setSelectedItem(supplier);
+        comboKategoriProduk.setSelectedItem(kategori);
+        txtHargaJual.setText(String.valueOf(hargaJual));
+        txtHargaBeli.setText(String.valueOf(hargaBeli));
+        txtStokProduk.setText(String.valueOf(stok));
+        txtDeskripsiProduk.setText(deskripsi);
+    }
+
+    public JTextField getTxtDeskripsiProduk() {
+        return txtDeskripsiProduk;
+    }
+
+    public void setTxtDeskripsiProduk(JTextField txtDeskripsiProduk) {
+        this.txtDeskripsiProduk = txtDeskripsiProduk;
+    }
+
+    public JTextField getTxtGambarProduk() {
+        return txtGambarProduk;
+    }
+
+    public void setTxtGambarProduk(JTextField txtGambarProduk) {
+        this.txtGambarProduk = txtGambarProduk;
+    }
+
+    public JTextField getTxtHargaBeli() {
+        return txtHargaBeli;
+    }
+
+    public void setTxtHargaBeli(JTextField txtHargaBeli) {
+        this.txtHargaBeli = txtHargaBeli;
+    }
+
+    public JTextField getTxtHargaJual() {
+        return txtHargaJual;
+    }
+
+    public void setTxtHargaJual(JTextField txtHargaJual) {
+        this.txtHargaJual = txtHargaJual;
+    }
+
+    public JTextField getTxtKodeProduk() {
+        return txtKodeProduk;
+    }
+
+    public void setTxtKodeProduk(JTextField txtKodeProduk) {
+        this.txtKodeProduk = txtKodeProduk;
+    }
+
+    public JTextField getTxtNamaProduk() {
+        return txtNamaProduk;
+    }
+
+    public void setTxtNamaProduk(JTextField txtNamaProduk) {
+        this.txtNamaProduk = txtNamaProduk;
+    }
+
+    public JTextField getTxtStokProduk() {
+        return txtStokProduk;
+    }
+
+    public void setTxtStokProduk(JTextField txtStokProduk) {
+        this.txtStokProduk = txtStokProduk;
+    }
+    
     private int id;
-    private int KP;
+    private String KP;
     private String NP;
     private String GP;
     private String PSup;
@@ -86,6 +156,7 @@ public class EditProduk1 extends javax.swing.JDialog {
         jLabel1.setText("Form Edit Produk");
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 10, -1, -1));
 
+        txtKodeProduk.setEditable(false);
         txtKodeProduk.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtKodeProdukActionPerformed(evt);
@@ -237,7 +308,7 @@ public class EditProduk1 extends javax.swing.JDialog {
 
     private void btnSimpanEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSimpanEditActionPerformed
         // Ambil data dari form
-        String kodeProduk = txtKodeProduk.getText(); // Kode produk tetap sebagai VARCHAR
+        String kodeProduk = txtKodeProduk.getText();
         String namaProduk = txtNamaProduk.getText();
         String gambarProduk = txtGambarProduk.getText();
         String produkSupplier = comboSupplierProduk.getSelectedItem().toString();
@@ -259,7 +330,7 @@ public class EditProduk1 extends javax.swing.JDialog {
             hargaBeli = Integer.parseInt(txtHargaBeli.getText());
             stok = Integer.parseInt(txtStokProduk.getText());
         } catch (NumberFormatException e) {
-//            JOptionPane.showMessageDialog(this, "Pastikan harga dan stok diisi dengan angka yang valid.", "Input Error", JOptionPane.WARNING _MESSAGE);
+            JOptionPane.showMessageDialog(this, "Pastikan harga dan stok diisi dengan angka yang valid.", "Input Error", JOptionPane.WARNING_MESSAGE);
             return;  
         }
 
@@ -276,19 +347,11 @@ public class EditProduk1 extends javax.swing.JDialog {
             PS.setInt(6, hargaBeli);
             PS.setInt(7, stok);
             PS.setString(8, deskripsi);
-            PS.setString(9, kodeProduk);  // Kode produk sebagai VARCHAR
+            PS.setString(9, kodeProduk);
 
             PS.executeUpdate();
-            DashAdm_Produk.viewDataProduk("");
+            DashAdm_Produk.viewDataProduk(""); // Memperbarui tampilan data produk
             JOptionPane.showMessageDialog(this, "Data berhasil diperbarui");
-
-//            // Format tanggal
-//            Function d = new Date();
-//            SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy H:m:s z");
-//            String tanggal = sdf.format(d);
-//
-//            Function.logActivity("\n["+tanggal+"] Pengeditan produk berhasil "); 
-//            txtNamaProduk.requestFocus();
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(this, "Error saat memperbarui data: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
             e.printStackTrace();
@@ -382,11 +445,11 @@ public class EditProduk1 extends javax.swing.JDialog {
         this.id = id;
     }
 
-    public int getKP() {
+    public String getKP() {
         return KP;
     }
 
-    public void setKP(int KP) {
+    public void setKP(String KP) {
         this.KP = KP;
     }
 

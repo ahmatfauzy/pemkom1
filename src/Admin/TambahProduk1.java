@@ -5,6 +5,7 @@
 package Admin;
 
 //import static Admin.DashAdm_Produk.viewDataProduk;
+import static Admin.GenerateCode.generateCode;
 import UILogin.Koneksi;
 import java.io.File;
 import java.sql.Connection;
@@ -32,6 +33,7 @@ public class TambahProduk1 extends javax.swing.JDialog {
         
          viewCategory("produk_kategori", jComboBox1);
          viewCategory("supplier", jComboBox2);
+         generateCode();
     }
 
     TambahProduk1() {
@@ -81,6 +83,7 @@ public class TambahProduk1 extends javax.swing.JDialog {
         jLabel1.setText("Form Tambah Produk");
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 10, -1, -1));
 
+        txtNama.setEditable(false);
         txtNama.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtNamaActionPerformed(evt);
@@ -360,7 +363,7 @@ public class TambahProduk1 extends javax.swing.JDialog {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JSeparator jSeparator1;
     private rojeru_san.complementos.RSButtonHover rSButtonHover1;
-    private javax.swing.JTextField txtNama;
+    public static javax.swing.JTextField txtNama;
     private javax.swing.JTextField txtNama2;
     private javax.swing.JTextField txtNama3;
     private javax.swing.JTextField txtNama4;
@@ -387,4 +390,6 @@ private void viewCategory(String tableName, JComboBox cmb){
         System.err.println("ErrorCode: 1123"+e.getMessage());
     }
 }
+
+
 }
