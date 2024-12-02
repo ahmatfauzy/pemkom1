@@ -61,6 +61,8 @@ public class inputKasir extends javax.swing.JFrame {
         btnHapus = new rojeru_san.complementos.RSButtonHover();
         pnlNota = new javax.swing.JPanel();
         headerNota = new javax.swing.JPanel();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
         jScrollPane3 = new javax.swing.JScrollPane();
         tblNota = new javax.swing.JTable();
         pnlTotalHargaNota = new javax.swing.JPanel();
@@ -267,24 +269,32 @@ public class inputKasir extends javax.swing.JFrame {
         headerNota.setBackground(new java.awt.Color(255, 255, 255));
         headerNota.setPreferredSize(new java.awt.Dimension(360, 70));
         headerNota.setLayout(new java.awt.BorderLayout());
+
+        jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel6.setText("Three Mas Kentir");
+        headerNota.add(jLabel6, java.awt.BorderLayout.PAGE_START);
+
+        jLabel7.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel7.setText("Jln Mataram, Pesurungan Lor, Kec. Margadana, Kota Tegal, Jawa Tengah");
+        headerNota.add(jLabel7, java.awt.BorderLayout.CENTER);
+
         pnlNota.add(headerNota, java.awt.BorderLayout.PAGE_START);
 
         tblNota.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
                 "ID", "Nama Produk", "QTY", "Harga"
             }
         ));
         jScrollPane3.setViewportView(tblNota);
-        tblNota.getAccessibleContext().setAccessibleParent(jScrollPane2);
 
         pnlNota.add(jScrollPane3, java.awt.BorderLayout.CENTER);
 
+        pnlTotalHargaNota.setBackground(new java.awt.Color(255, 255, 255));
         pnlTotalHargaNota.setPreferredSize(new java.awt.Dimension(360, 50));
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -423,7 +433,31 @@ public class inputKasir extends javax.swing.JFrame {
     }//GEN-LAST:event_btnHapusActionPerformed
 
     private void btnCOActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCOActionPerformed
-        // TODO add your handling code here:
+        // Menghitung total harga dari tblCart
+        double totalHarga = 0;
+        DefaultTableModel modelCart = (DefaultTableModel) tblCart.getModel();
+        DefaultTableModel modelNota = (DefaultTableModel) tblNota.getModel();
+
+        // Memindahkan data dari tblCart ke tblNota
+        for (int i = 0; i < modelCart.getRowCount(); i++) {
+            int id = (int) modelCart.getValueAt(i, 0); 
+            String namaProduk = (String) modelCart.getValueAt(i, 1); 
+            int qty = (int) modelCart.getValueAt(i, 2); 
+            int harga = (int) modelCart.getValueAt(i, 3); 
+
+            // Hitung total harga
+            totalHarga += qty * harga;
+
+            // Tambahkan baris ke tblNota
+            modelNota.addRow(new Object[]{id, namaProduk, qty, harga});
+        }
+
+        // Update total harga di lblTotalHargaNota
+        lblTotalHargaNota.setText("Rp. " + (long) totalHarga);
+
+        // Kosongkan tblCart setelah checkout
+        modelCart.setRowCount(0);
+        lblTotalHarga.setText("Rp. 0");
     }//GEN-LAST:event_btnCOActionPerformed
 
     /**
@@ -477,6 +511,8 @@ public class inputKasir extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
