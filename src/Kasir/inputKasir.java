@@ -56,10 +56,18 @@ public class inputKasir extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
+        TAMBAHAN = new javax.swing.JPanel();
         jPanel5 = new javax.swing.JPanel();
         btnHapus = new rojeru_san.complementos.RSButtonHover();
-        tblNota = new javax.swing.JPanel();
+        pnlNota = new javax.swing.JPanel();
+        headerNota = new javax.swing.JPanel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        tblNota = new javax.swing.JTable();
+        pnlTotalHargaNota = new javax.swing.JPanel();
+        jLabel5 = new javax.swing.JLabel();
+        lblTotalHargaNota = new javax.swing.JLabel();
         btnCO = new rojeru_san.complementos.RSButtonHover();
+        jScrollPane2 = new javax.swing.JScrollPane();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -139,18 +147,18 @@ public class inputKasir extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(tblCart);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(238, 250, 714, 415));
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 170, 714, 415));
 
         txtSearch.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtSearchActionPerformed(evt);
             }
         });
-        getContentPane().add(txtSearch, new org.netbeans.lib.awtextra.AbsoluteConstraints(940, 190, 379, 40));
+        getContentPane().add(txtSearch, new org.netbeans.lib.awtextra.AbsoluteConstraints(940, 110, 410, 40));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel1.setText("Product");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 190, -1, 28));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 110, -1, 28));
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
@@ -158,30 +166,28 @@ public class inputKasir extends javax.swing.JFrame {
 
         lblTotalHarga.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         lblTotalHarga.setForeground(new java.awt.Color(255, 0, 0));
-        lblTotalHarga.setText("jLabel3");
+        lblTotalHarga.setText("Rp. 0");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
                 .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(lblTotalHarga, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(0, 12, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblTotalHarga)
                     .addComponent(jLabel4))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(0, 12, Short.MAX_VALUE))
         );
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(238, 671, -1, -1));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 610, -1, -1));
 
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(1324, 250, -1, -1));
@@ -196,7 +202,7 @@ public class inputKasir extends javax.swing.JFrame {
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGap(0, 415, Short.MAX_VALUE)
         );
 
         getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(958, 250, -1, 415));
@@ -216,6 +222,21 @@ public class inputKasir extends javax.swing.JFrame {
 
         getContentPane().add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 70, -1, -1));
 
+        TAMBAHAN.setBackground(new java.awt.Color(51, 51, 51));
+
+        javax.swing.GroupLayout TAMBAHANLayout = new javax.swing.GroupLayout(TAMBAHAN);
+        TAMBAHAN.setLayout(TAMBAHANLayout);
+        TAMBAHANLayout.setHorizontalGroup(
+            TAMBAHANLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 220, Short.MAX_VALUE)
+        );
+        TAMBAHANLayout.setVerticalGroup(
+            TAMBAHANLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 150, Short.MAX_VALUE)
+        );
+
+        getContentPane().add(TAMBAHAN, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -50, -1, 150));
+
         jPanel5.setBackground(new java.awt.Color(51, 51, 51));
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
@@ -231,28 +252,71 @@ public class inputKasir extends javax.swing.JFrame {
 
         getContentPane().add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -10, -1, -1));
 
+        btnHapus.setBackground(new java.awt.Color(255, 51, 51));
         btnHapus.setText("Hapus");
         btnHapus.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnHapusActionPerformed(evt);
             }
         });
-        getContentPane().add(btnHapus, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 190, 130, 40));
+        getContentPane().add(btnHapus, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 110, 130, 40));
 
-        tblNota.setBackground(new java.awt.Color(255, 255, 255));
+        pnlNota.setBackground(new java.awt.Color(255, 255, 255));
+        pnlNota.setLayout(new java.awt.BorderLayout());
 
-        javax.swing.GroupLayout tblNotaLayout = new javax.swing.GroupLayout(tblNota);
-        tblNota.setLayout(tblNotaLayout);
-        tblNotaLayout.setHorizontalGroup(
-            tblNotaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+        headerNota.setBackground(new java.awt.Color(255, 255, 255));
+        headerNota.setPreferredSize(new java.awt.Dimension(360, 70));
+        headerNota.setLayout(new java.awt.BorderLayout());
+        pnlNota.add(headerNota, java.awt.BorderLayout.PAGE_START);
+
+        tblNota.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "ID", "Nama Produk", "QTY", "Harga"
+            }
+        ));
+        jScrollPane3.setViewportView(tblNota);
+        tblNota.getAccessibleContext().setAccessibleParent(jScrollPane2);
+
+        pnlNota.add(jScrollPane3, java.awt.BorderLayout.CENTER);
+
+        pnlTotalHargaNota.setPreferredSize(new java.awt.Dimension(360, 50));
+
+        jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel5.setText("Total Harga");
+
+        lblTotalHargaNota.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lblTotalHargaNota.setForeground(new java.awt.Color(255, 0, 0));
+        lblTotalHargaNota.setText("Rp. 0");
+
+        javax.swing.GroupLayout pnlTotalHargaNotaLayout = new javax.swing.GroupLayout(pnlTotalHargaNota);
+        pnlTotalHargaNota.setLayout(pnlTotalHargaNotaLayout);
+        pnlTotalHargaNotaLayout.setHorizontalGroup(
+            pnlTotalHargaNotaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlTotalHargaNotaLayout.createSequentialGroup()
+                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(lblTotalHargaNota, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 102, Short.MAX_VALUE))
         );
-        tblNotaLayout.setVerticalGroup(
-            tblNotaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+        pnlTotalHargaNotaLayout.setVerticalGroup(
+            pnlTotalHargaNotaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlTotalHargaNotaLayout.createSequentialGroup()
+                .addGroup(pnlTotalHargaNotaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblTotalHargaNota)
+                    .addComponent(jLabel5))
+                .addGap(0, 30, Short.MAX_VALUE))
         );
 
-        getContentPane().add(tblNota, new org.netbeans.lib.awtextra.AbsoluteConstraints(960, 250, 360, 480));
+        pnlNota.add(pnlTotalHargaNota, java.awt.BorderLayout.PAGE_END);
+
+        getContentPane().add(pnlNota, new org.netbeans.lib.awtextra.AbsoluteConstraints(960, 170, 390, 480));
 
         btnCO.setText("CheckOut");
         btnCO.addActionListener(new java.awt.event.ActionListener() {
@@ -260,7 +324,8 @@ public class inputKasir extends javax.swing.JFrame {
                 btnCOActionPerformed(evt);
             }
         });
-        getContentPane().add(btnCO, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 690, 130, 40));
+        getContentPane().add(btnCO, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 610, 130, 40));
+        getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(960, 180, 390, 410));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -398,6 +463,7 @@ public class inputKasir extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel TAMBAHAN;
     private rojeru_san.complementos.RSButtonHover btnCO;
     private rojeru_san.complementos.RSButtonHover btnHapus;
     private rojeru_san.complementos.RSButtonHover btnHome;
@@ -405,20 +471,27 @@ public class inputKasir extends javax.swing.JFrame {
     private rojeru_san.complementos.RSButtonHover btnHome2;
     private rojeru_san.complementos.RSButtonHover btnLogout1;
     private javax.swing.JPanel header;
+    private javax.swing.JPanel headerNota;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JLabel lblTotalHarga;
+    private javax.swing.JLabel lblTotalHargaNota;
+    private javax.swing.JPanel pnlNota;
+    private javax.swing.JPanel pnlTotalHargaNota;
     private javax.swing.JPanel sidebar;
     private static javax.swing.JTable tblCart;
-    private javax.swing.JPanel tblNota;
+    private javax.swing.JTable tblNota;
     private javax.swing.JTextField txtSearch;
     // End of variables declaration//GEN-END:variables
 
