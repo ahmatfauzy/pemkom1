@@ -59,6 +59,7 @@ public class inputKasir extends javax.swing.JFrame {
         jPanel5 = new javax.swing.JPanel();
         btnHapus = new rojeru_san.complementos.RSButtonHover();
         tblNota = new javax.swing.JPanel();
+        btnHapus1 = new rojeru_san.complementos.RSButtonHover();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -221,11 +222,11 @@ public class inputKasir extends javax.swing.JFrame {
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 220, Short.MAX_VALUE)
+            .addGap(0, 0, Short.MAX_VALUE)
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 140, Short.MAX_VALUE)
+            .addGap(0, 0, Short.MAX_VALUE)
         );
 
         getContentPane().add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -10, -1, -1));
@@ -236,7 +237,7 @@ public class inputKasir extends javax.swing.JFrame {
                 btnHapusActionPerformed(evt);
             }
         });
-        getContentPane().add(btnHapus, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 190, 130, 40));
+        getContentPane().add(btnHapus, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 690, 130, 40));
 
         tblNota.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -244,14 +245,22 @@ public class inputKasir extends javax.swing.JFrame {
         tblNota.setLayout(tblNotaLayout);
         tblNotaLayout.setHorizontalGroup(
             tblNotaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 360, Short.MAX_VALUE)
+            .addGap(0, 0, Short.MAX_VALUE)
         );
         tblNotaLayout.setVerticalGroup(
             tblNotaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 480, Short.MAX_VALUE)
+            .addGap(0, 0, Short.MAX_VALUE)
         );
 
-        getContentPane().add(tblNota, new org.netbeans.lib.awtextra.AbsoluteConstraints(960, 250, -1, 480));
+        getContentPane().add(tblNota, new org.netbeans.lib.awtextra.AbsoluteConstraints(960, 250, 360, 480));
+
+        btnHapus1.setText("Hapus");
+        btnHapus1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnHapus1ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnHapus1, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 190, 130, 40));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -349,6 +358,10 @@ public class inputKasir extends javax.swing.JFrame {
         removeProductFromCart();
     }//GEN-LAST:event_btnHapusActionPerformed
 
+    private void btnHapus1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHapus1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnHapus1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -387,6 +400,7 @@ public class inputKasir extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private rojeru_san.complementos.RSButtonHover btnHapus;
+    private rojeru_san.complementos.RSButtonHover btnHapus1;
     private rojeru_san.complementos.RSButtonHover btnHome;
     private rojeru_san.complementos.RSButtonHover btnHome1;
     private rojeru_san.complementos.RSButtonHover btnHome2;
