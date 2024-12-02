@@ -59,7 +59,7 @@ public class inputKasir extends javax.swing.JFrame {
         jPanel5 = new javax.swing.JPanel();
         btnHapus = new rojeru_san.complementos.RSButtonHover();
         tblNota = new javax.swing.JPanel();
-        btnHapus1 = new rojeru_san.complementos.RSButtonHover();
+        btnCO = new rojeru_san.complementos.RSButtonHover();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -237,7 +237,7 @@ public class inputKasir extends javax.swing.JFrame {
                 btnHapusActionPerformed(evt);
             }
         });
-        getContentPane().add(btnHapus, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 690, 130, 40));
+        getContentPane().add(btnHapus, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 190, 130, 40));
 
         tblNota.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -254,13 +254,13 @@ public class inputKasir extends javax.swing.JFrame {
 
         getContentPane().add(tblNota, new org.netbeans.lib.awtextra.AbsoluteConstraints(960, 250, 360, 480));
 
-        btnHapus1.setText("Hapus");
-        btnHapus1.addActionListener(new java.awt.event.ActionListener() {
+        btnCO.setText("CheckOut");
+        btnCO.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnHapus1ActionPerformed(evt);
+                btnCOActionPerformed(evt);
             }
         });
-        getContentPane().add(btnHapus1, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 190, 130, 40));
+        getContentPane().add(btnCO, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 690, 130, 40));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -313,11 +313,10 @@ public class inputKasir extends javax.swing.JFrame {
                 String pName = R.getString("nama_produk");
                 int pPr = R.getInt("harga_produk_beli");
                 int pSt = R.getInt("produk_stok");
-                
-//                boolean adadiTabel = cekID();                
+                             
                 
 
-                //cek, apakah produk sudah ada di keranjang
+                // pengecekan
                 int dt = tblCart.getRowCount();//0
                 if(dt > 0){
                     boolean ada = false;
@@ -358,9 +357,9 @@ public class inputKasir extends javax.swing.JFrame {
         removeProductFromCart();
     }//GEN-LAST:event_btnHapusActionPerformed
 
-    private void btnHapus1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHapus1ActionPerformed
+    private void btnCOActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCOActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnHapus1ActionPerformed
+    }//GEN-LAST:event_btnCOActionPerformed
 
     /**
      * @param args the command line arguments
@@ -399,8 +398,8 @@ public class inputKasir extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private rojeru_san.complementos.RSButtonHover btnCO;
     private rojeru_san.complementos.RSButtonHover btnHapus;
-    private rojeru_san.complementos.RSButtonHover btnHapus1;
     private rojeru_san.complementos.RSButtonHover btnHome;
     private rojeru_san.complementos.RSButtonHover btnHome1;
     private rojeru_san.complementos.RSButtonHover btnHome2;

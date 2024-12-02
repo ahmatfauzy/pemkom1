@@ -405,7 +405,7 @@
       </Events>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="810" y="690" width="130" height="40"/>
+          <AbsoluteConstraints x="680" y="190" width="130" height="40"/>
         </Constraint>
       </Constraints>
     </Component>
@@ -434,16 +434,16 @@
         </DimensionLayout>
       </Layout>
     </Container>
-    <Component class="rojeru_san.complementos.RSButtonHover" name="btnHapus1">
+    <Component class="rojeru_san.complementos.RSButtonHover" name="btnCO">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Hapus"/>
+        <Property name="text" type="java.lang.String" value="CheckOut"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnHapus1ActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCOActionPerformed"/>
       </Events>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="660" y="190" width="130" height="40"/>
+          <AbsoluteConstraints x="810" y="690" width="130" height="40"/>
         </Constraint>
       </Constraints>
     </Component>
